@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          create-database-schemas: true
+    show-sql: true
+    generate-ddl: true
+  datasource:
+    url: jdbc:h2:file:~/test
