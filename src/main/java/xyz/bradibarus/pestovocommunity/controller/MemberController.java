@@ -14,6 +14,11 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/getMembers";
+    }
+
     @GetMapping("/addMember")
     public String addMember(Model model) {
         model.addAttribute("member", new Member());
