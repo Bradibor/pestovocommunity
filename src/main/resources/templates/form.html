@@ -6,6 +6,7 @@
     <title>Spring Boot Application</title>
 </head>
 <body>
+<a href="/getMembers">Все карточки</a>
 <h4>Основная информация:</h4>
 <form action="#" th:action="@{/addMember}" th:object="${member}" method="post">
     <p>Фамилия: <input type="text" th:field="*{lastName}" /></p>

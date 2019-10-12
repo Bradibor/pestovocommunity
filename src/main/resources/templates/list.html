@@ -6,6 +6,41 @@
     <title>Spring Boot Application</title>
 </head>
 <body>
-<h4>Основная информация:</h4>
+<a href="/addMember">Форма добавления</a>
+<h4>Карточки:</h4>
+<div th:each="member : ${members}" style="background-color: ghostwhite">
+    <h4>
+    ФИО:
+    <span th:text="${member.lastName}"></span>
+    <span th:text="${member.firstName}"></span>
+    <span th:text="${member.middleName}"></span>
+    </h4>
+    <p>
+    Контакты:
+    <span th:text="${member.address}"></span>
+    <span th:text="${member.phone}"></span>
+    <span th:text="${member.email}"></span>
+    </p>
+    <p>Членство в АДНП:
+    <span th:if="${member.memberType == T(xyz.bradibarus.pestovocommunity.model.Member.MemberType).JOINED}">
+        <span>Член АДНП</span>
+        <span th:text="${member.joined.joinDate}"></span>
+        <span th:text="${member.joined.protocolNumber}"></span>
+    </span>
+
+    <span th:if="${member.memberType == T(xyz.bradibarus.pestovocommunity.model.Member.MemberType).NOT_JOINED}">Не член АДНП</span>
+    </p>
+    <p th:if="${member.passport != null}">
+        Паспортные данные:
+        <span th:text="${member.passport.authorityName}"></span>
+        <span th:text="${member.passport.date}"></span>
+        <span th:text="${member.passport.series}"></span>
+        <span th:text="${member.passport.number}"></span>
+        <span th:text="${member.passport.address}"></span>
+    </p>
+    <a th:href="@{/deleteMember/{id}(id=${member.id})}">Удалить</a>
+    <p th:text="${member.id}"></p>
+    </form>
+</div>
 </body>
 </html>
